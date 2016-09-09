@@ -1,0 +1,12 @@
+Package: CAPIT
+Type: Package
+Title: Sparse CCA via Precision Adjusted Iterative Thresholding (CAPIT)
+Version: 1.0
+Date: 2016-08-27
+Author: Mengjie Chen
+Maintainer: Mengjie Chen <mengjie@email.unc.edu>
+Description: The package inplements Sparse CCA via Precision Adjusted Iterative
+    Thresholding (CAPIT) procedure.
+License: GPL (>=2)
+LazyData: TRUE
+RoxygenNote: 5.0.1
