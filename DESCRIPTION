@@ -10,3 +10,5 @@ Description: The package inplements Sparse CCA via Precision Adjusted Iterative
 License: GPL (>=2)
 LazyData: TRUE
 RoxygenNote: 5.0.1
+NeedsCompilation: no
+Packaged: 2016-09-07 20:22:04 UTC; mengjiechen
