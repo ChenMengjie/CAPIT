@@ -1,5 +1,5 @@
 sCCA_swap_cross <- function(X, Y, method = "thresholding", lambda = seq(0.001, 0.3, length.out=30), selection = "hard",
-                      alpha = 0.3, select.covariance = "loglikelihood", search.grid = seq(0.5, 3, by=0.5), same.threshold = TRUE, previous = TRUE){
+                      alpha = 0.3, select.covariance = "loglikelihood", search.grid = seq(0.5, 3, by=0.5), same.threshold = FALSE, previous = TRUE){
 
   svd.regression <- function(u, s, X, Y){
     uID <- which(u != 0)

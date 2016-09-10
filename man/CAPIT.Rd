@@ -8,7 +8,7 @@ CAPIT(X, Y, cross.validation = TRUE, precision = FALSE, preX1 = NULL,
   preY1 = NULL, preX2 = NULL, preY2 = NULL, method = "thresholding",
   lambda = seq(0.001, 0.3, length.out = 20), selection = "hard",
   alpha = 0.3, select.covariance = "loglikelihood", search.grid = seq(0.5,
-  3, by = 0.5), lambda1 = NULL, lambda2 = NULL)
+  3, by = 0.5), lambda1 = NULL, lambda2 = NULL, same.threshold = TRUE)
 }
 \arguments{
 \item{X}{A $n \times p1$ data matrix.}
@@ -36,7 +36,9 @@ Other choices include ``toeplitz" algorithm: implements the method proposed in C
 
 \item{lambda1}{when ``cross.validation = FALSE'', the thresholding level used in the initialization is required as input.}
 
-\item{lambda2}{when ``cross.validation = FALSE'', the thresholding level for sparse canonical vectors is required as input.}
+\item{lambda2}{when ``cross.validation = FALSE'', the thresholding level for iterative thresholding is required as input.}
+
+\item{same.threshold}{When searching for the best performed thresholding levels through cross validation, whether to assume the thresholding levels used in the initialization and iterative thresholding are the same. The default is TRUE.}
 
 \item{select.covariance:}{Criterion used in cross validation of sparse covariance matrix estimation. The default is ``loglikelihood".
 When specified to "floss", frobenius loss between training and testing is minimized.}

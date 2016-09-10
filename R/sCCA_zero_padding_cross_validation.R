@@ -1,5 +1,5 @@
 sCCA_zero_padding_cross_validation <- function(trainingX, tuneX, trainingY, tuneY, preX, preY,
-                                               p1, pp, search.grid, eta, same.threshold = TRUE, previous = TRUE){
+                                               p1, pp, search.grid, eta, same.threshold = FALSE, previous = TRUE){
 
   distance_cal <- function(alpha, beta, covX, covY, covXY){
     aa <- t(alpha)%*%covXY%*%beta

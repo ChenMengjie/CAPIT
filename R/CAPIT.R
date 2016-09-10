@@ -23,7 +23,8 @@
 #' When specified to "floss", frobenius loss between training and testing is minimized.
 #' @param search.grid A sequence of thresholding levels will be tested in cross-validation for zero padding.
 #' @param lambda1 when ``cross.validation = FALSE'', the thresholding level used in the initialization is required as input.
-#' @param lambda2 when ``cross.validation = FALSE'', the thresholding level for sparse canonical vectors is required as input.
+#' @param lambda2 when ``cross.validation = FALSE'', the thresholding level for iterative thresholding is required as input.
+#' @param same.threshold When searching for the best performed thresholding levels through cross validation, whether to assume the thresholding levels used in the initialization and iterative thresholding are the same. The default is TRUE.
 #' @return The output of \code{CAPIT} is a list, which further contains two list \code{res} and \code{resOLS}.
 #' \code{res} contains \code{alpha} and \code{beta}, which returns canonical vectors of X and Y estimated from vanilla CAPIT algorithm, respectively.
 #' \code{res} contains \code{alpha} and \code{beta}, which returns canonical vectors of X and Y estimated from CAPIT algorithm with refinement using ordinary least squares, respectively.
@@ -70,7 +71,7 @@
 
 CAPIT <- function(X, Y, cross.validation = TRUE, precision = FALSE, preX1 = NULL, preY1 = NULL, preX2 = NULL, preY2 = NULL,
                   method = "thresholding", lambda = seq(0.001, 0.3, length.out = 20), selection = "hard",
-                  alpha = 0.3, select.covariance = "loglikelihood", search.grid = seq(0.5, 3, by=0.5), lambda1 = NULL, lambda2 = NULL){
+                  alpha = 0.3, select.covariance = "loglikelihood", search.grid = seq(0.5, 3, by=0.5), lambda1 = NULL, lambda2 = NULL, same.threshold = TRUE){
 
   if(precision == TRUE){
     print("Input estimated precision matrix.")
@@ -88,7 +89,8 @@ CAPIT <- function(X, Y, cross.validation = TRUE, precision = FALSE, preX1 = NULL
 
   } else if(cross.validation == TRUE){
       res <- sCCA_swap_cross(X, Y, method = method, lambda = lambda, selection = selection,
-                                  alpha = alpha, select.covariance = select.covariance, search.grid = search.grid)
+                                  alpha = alpha, select.covariance = select.covariance,
+                                  search.grid = search.grid, same.threshold = same.threshold)
     } else if(is.null(lambda1) | is.null(lambda2)){
         stop("When cross.validation = FALSE, must input the thresholding level for zero padding!")
     } else {
